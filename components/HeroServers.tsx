@@ -25,6 +25,7 @@ import DefaultIcon from "@/assets/images/MapIcons/DefaultIcon.png";
 import Image from "next/image";
 import { Copy, Dot, Play, Users } from "lucide-react";
 import { useState } from "react";
+import { cn } from "@/lib/utils";
 
 const HeroServers = () => {
   const ServersDM: Server[] = servers.filter((server) => server.mode === "DM");
@@ -34,11 +35,14 @@ const HeroServers = () => {
   const Servers5V5: Server[] = servers.filter(
     (server) => server.mode === "5v5"
   );
-
+  const ServerModes = [
+    "All",
+    ...new Set(servers.map((servers) => servers.mode)),
+  ];
   const [copiedId, setCopiedId] = useState<number | null>(null);
-
+  const [selectedMode, setSelectedMode] = useState<string>("All");
   const handleCopy = (ip: string, id: number) => {
-    navigator.clipboard.writeText(ip);
+    navigator.clipboard.writeText(`connect ${ip}`);
     setCopiedId(id);
 
     setTimeout(() => setCopiedId(null), 2000);
@@ -141,29 +145,79 @@ const HeroServers = () => {
       </div>
     </div>
   );
-
   return (
-    <div className="flex flex-col mt-10 gap-8 px-4">
-      <div className="flex flex-col gap-4">
-        <h2 className="text-2xl font-semibold text-center">5v5</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          {Servers5V5.map(renderServerCard)}
+    <div className="flex flex-col mt-15 gap-8 px-4">
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <h1 className="font-bold text-2xl md:text-3xl text-center md:text-left">
+          Bizning Serverlar
+        </h1>
+
+        <div className="flex flex-wrap justify-center md:justify-end gap-2">
+          {ServerModes.map((mode) => (
+            <button
+              key={mode}
+              onClick={() => setSelectedMode(mode)}
+              className={cn(
+                "px-3 py-1 rounded-md transition text-sm sm:text-base",
+                selectedMode === mode
+                  ? "bg-red-600 text-white font-bold"
+                  : "bg-neutral-800 text-gray-300 hover:bg-neutral-700"
+              )}
+            >
+              {mode === "All" ? "Barchasi" : mode}
+            </button>
+          ))}
         </div>
       </div>
 
-      <div className="flex flex-col gap-4">
-        <h2 className="text-2xl font-semibold text-center">DeathMatch</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          {ServersDM.map(renderServerCard)}
-        </div>
-      </div>
+      {selectedMode === "All" && (
+        <div className="flex flex-col gap-10">
+          <div className="flex flex-col gap-4">
+            <h2 className="text-2xl font-semibold text-center">5v5</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+              {Servers5V5.map(renderServerCard)}
+            </div>
+          </div>
 
-      <div className="flex flex-col gap-4">
-        <h2 className="text-2xl font-semibold text-center">Retake</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          {ServersRetake.map(renderServerCard)}
+          <div className="flex flex-col gap-4">
+            <h2 className="text-2xl font-semibold text-center">DeathMatch</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+              {ServersDM.map(renderServerCard)}
+            </div>
+          </div>
+
+          <div className="flex flex-col gap-4">
+            <h2 className="text-2xl font-semibold text-center">Retake</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+              {ServersRetake.map(renderServerCard)}
+            </div>
+          </div>
         </div>
-      </div>
+      )}
+      {selectedMode === "5v5" && (
+        <div className="flex flex-col gap-4">
+          <h2 className="text-2xl font-semibold text-center">5v5</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            {Servers5V5.map(renderServerCard)}
+          </div>
+        </div>
+      )}
+      {selectedMode === "DM" && (
+        <div className="flex flex-col gap-4">
+          <h2 className="text-2xl font-semibold text-center">DeathMatch</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            {ServersDM.map(renderServerCard)}
+          </div>
+        </div>
+      )}
+      {selectedMode === "Retake" && (
+        <div className="flex flex-col gap-4">
+          <h2 className="text-2xl font-semibold text-center">Retake</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            {ServersRetake.map(renderServerCard)}
+          </div>
+        </div>
+      )}
     </div>
   );
 };

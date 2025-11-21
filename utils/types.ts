@@ -4,6 +4,6 @@ export interface Server {
   map: string;
   players: string;
   maxPlayers: string;
-  mode: "DM" | "5v5" | "Retake";
+  mode: string;
   ip: string;
 }

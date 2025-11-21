@@ -113,3 +113,44 @@ export const servers: Server[] = [
     ip: "123.45.69.3:27015",
   },
 ];
+
+export const Premiums = [
+  {
+    id: 1,
+    name: "Premium Lite",
+    price: 10000,
+    discountPersantage: 0,
+    discountEnds: "",
+    benfists: [
+      "Rezervlangan Slot",
+      "Premium Teg",
+      "Skinchanger",
+      "Agentlar",
+      "Musiqa To'plami",
+      "AWP cheklovidan immunitet",
+      "Tasodifiy smoke rangi",
+      "RETAKE serverlarida kutishsiz o'yinga qo'shilish",
+      "Va boshqa imkoniyatlar"
+    ],
+    term: "30 kun"
+  },
+  {
+    id: 2,
+    name: "Premium Lite",
+    price: 300000,
+    discountPersantage: 50,
+    discountEnds: "31.12.2025 23:59",
+    benfists: [
+      "Rezervlangan Slot",
+      "Premium Teg",
+      "Skinchanger",
+      "Agentlar",
+      "Musiqa To'plami",
+      "AWP cheklovidan immunitet",
+      "Tasodifiy smoke rangi",
+      "RETAKE serverlarida kutishsiz o'yinga qo'shilish",
+      "Va boshqa imkoniyatlar"
+    ],
+    term: "1 yil"
+  }
+]

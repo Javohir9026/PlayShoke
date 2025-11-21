@@ -18,7 +18,7 @@ export default function Header() {
 
   const navItems = [
     { href: "/", icon: <House />, label: "Bosh sahifa" },
-    { href: "/premiums", icon: <Star />, label: "Premium" },
+    { href: "/shop", icon: <Star />, label: "Premium" },
     { href: "/contact", icon: <ReceiptText />, label: "Bog'lanish" },
     { href: "/rules", icon: <Scale />, label: "Qoidalar" },
   ];
@@ -36,7 +36,7 @@ export default function Header() {
               src={LogoText}
               alt="Logo Text"
               width={300}
-              className="object-contain"
+              className="object-cover max-h-20"
             />
           </Link>
         </div>
@@ -50,7 +50,9 @@ export default function Header() {
                     key={item.href}
                     href={item.href}
                     className={`flex items-center gap-1 cursor-pointer transition-colors ${
-                      isActive ? "text-white" : "text-gray-300 hover:text-white"
+                      isActive
+                        ? "text-red-500 font-semibold"
+                        : "text-gray-300 hover:text-white"
                     }`}
                   >
                     {item.icon} {item.label}

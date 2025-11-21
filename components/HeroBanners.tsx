@@ -26,7 +26,7 @@ export default function HeroCarousel() {
       if (!isPaused) {
         nextSlide();
       }
-    }, 4000); 
+    }, 3000); 
     return () => clearInterval(interval);
   }, [isPaused]);
 
