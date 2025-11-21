@@ -4,6 +4,15 @@ import { Check } from "lucide-react";
 import { useParams } from "next/navigation";
 import PremiumImage from "@/assets/images/premium.webp";
 import Image from "next/image";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
+import Link from "next/link";
 const page = () => {
   const param = useParams();
   const { id } = param;
@@ -11,8 +20,27 @@ const page = () => {
   console.log(data);
   return (
     <div className="container mb-10">
+      <Breadcrumb>
+        <BreadcrumbList>
+          <BreadcrumbItem>
+            <BreadcrumbLink asChild>
+              <Link href="/shop">Premiumlar</Link>
+            </BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem>
+            <BreadcrumbPage className="text-red-500">
+              {data?.name}
+            </BreadcrumbPage>
+          </BreadcrumbItem>
+        </BreadcrumbList>
+      </Breadcrumb>
       <h1 className="text-[30px] font-bold">PREMIUM {data?.term}</h1>
-      <div className="flex gap-5 mt-5">
+      <div
+        className="flex flex-col lg:flex-row 
+        gap-5 mt-5
+      "
+      >
         <div className=" p-5 rounded-[20px] bg-red-900/20 flex flex-col gap-4 w-full max-h-[400px] ">
           <h1 className="font-bold text-17">Tavsif</h1>
           <div className="w-full border border-gray-700/40"></div>

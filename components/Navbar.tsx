@@ -2,6 +2,7 @@
 import {
   Bell,
   ChevronDown,
+  ChevronUp,
   House,
   ReceiptText,
   Scale,
@@ -12,9 +13,16 @@ import ProfilePhoto from "@/assets/images/profilePhoto.jpg";
 import LogoText from "@/assets/images/LogoTextPng.png";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
+import BellOpen from "./BellOpen";
+import { cn } from "@/lib/utils";
+import ProfileOpen from "./ProfileOpen";
 
 export default function Header() {
   const pathname = usePathname();
+
+  const [clickedBell, setClickedBell] = useState(false);
+  const [clickedProfile, setClickedProfile] = useState(false);
 
   const navItems = [
     { href: "/", icon: <House />, label: "Bosh sahifa" },
@@ -40,6 +48,7 @@ export default function Header() {
             />
           </Link>
         </div>
+
         <div className="flex gap-8">
           <div className="flex gap-2">
             <nav className="hidden md:flex items-center gap-8 text-sm">
@@ -63,8 +72,27 @@ export default function Header() {
           </div>
 
           <div className="flex items-center gap-6">
-            <Bell className="text-xl cursor-pointer hover:text-gray-300" />
-            <div className="flex items-center gap-1 cursor-pointer">
+            <button
+              onClick={() => {
+                setClickedBell((prev) => !prev);
+                setClickedProfile(false);
+              }}
+            >
+              <Bell
+                className={cn(
+                  "text-xl cursor-pointer hover:text-gray-300",
+                  clickedBell ? "text-red-500" : ""
+                )}
+              />
+            </button>
+
+            <button
+              onClick={() => {
+                setClickedProfile((prev)=>(!prev));
+                setClickedBell(false);
+              }}
+              className="flex items-center gap-1 cursor-pointer"
+            >
               <Image
                 src={ProfilePhoto}
                 alt="User"
@@ -72,11 +100,18 @@ export default function Header() {
                 height={36}
                 className="rounded-full object-cover"
               />
-              <ChevronDown className="text-lg" />
-            </div>
+              {clickedProfile ? (
+                <ChevronUp className="text-lg" />
+              ) : (
+                <ChevronDown className="text-lg" />
+              )}
+            </button>
           </div>
         </div>
       </header>
+
+      {clickedBell && <BellOpen />}
+      {clickedProfile && <ProfileOpen/>}
     </div>
   );
 }
