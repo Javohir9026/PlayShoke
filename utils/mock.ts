@@ -1,10 +1,10 @@
 import { Server } from "./types";
-
+import Avatar from '@/assets/images/profilePhoto.jpg'
 export const servers: Server[] = [
   {
     id: 1,
     name: "DM #1",
-    map: "Overpass",
+    map: "Dust2",
     players: "8",
     maxPlayers: "16",
     mode: "DM",
@@ -13,7 +13,7 @@ export const servers: Server[] = [
   {
     id: 2,
     name: "DM #2",
-    map: "Dust2",
+    map: "Inferno",
     players: "10",
     maxPlayers: "16",
     mode: "DM",
@@ -28,18 +28,46 @@ export const servers: Server[] = [
     mode: "DM",
     ip: "123.45.67.3:27015",
   },
-
   {
     id: 4,
+    name: "DM #4",
+    map: "Nuke",
+    players: "14",
+    maxPlayers: "16",
+    mode: "DM",
+    ip: "123.45.67.4:27015",
+  },
+  {
+    id: 5,
+    name: "DM #5",
+    map: "Anubis",
+    players: "9",
+    maxPlayers: "16",
+    mode: "DM",
+    ip: "123.45.67.5:27015",
+  },
+  {
+    id: 6,
+    name: "DM #6",
+    map: "Overpass",
+    players: "6",
+    maxPlayers: "16",
+    mode: "DM",
+    ip: "123.45.67.6:27015",
+  },
+
+  // ---------------- 5v5 ----------------
+  {
+    id: 7,
     name: "5v5 #1",
-    map: "Dust2",
+    map: "Ancient",
     players: "3",
     maxPlayers: "10",
     mode: "5v5",
     ip: "123.45.68.1:27015",
   },
   {
-    id: 5,
+    id: 8,
     name: "5v5 #2",
     map: "Mirage",
     players: "6",
@@ -48,51 +76,22 @@ export const servers: Server[] = [
     ip: "123.45.68.2:27015",
   },
   {
-    id: 6,
+    id: 9,
     name: "5v5 #3",
-    map: "Inferno",
+    map: "Dust2",
     players: "10",
     maxPlayers: "10",
     mode: "5v5",
     ip: "123.45.68.3:27015",
   },
-
-  {
-    id: 7,
-    name: "Retake #1",
-    map: "Train",
-    players: "4",
-    maxPlayers: "10",
-    mode: "Retake",
-    ip: "123.45.69.1:27015",
-  },
-  {
-    id: 8,
-    name: "Retake #2",
-    map: "Anubis",
-    players: "5",
-    maxPlayers: "10",
-    mode: "Retake",
-    ip: "123.45.69.2:27015",
-  },
-  {
-    id: 9,
-    name: "Retake #3",
-    map: "Overpass",
-    players: "7",
-    maxPlayers: "10",
-    mode: "Retake",
-    ip: "123.45.69.3:27015",
-  },
-
   {
     id: 10,
     name: "5v5 #4",
-    map: "Ancient",
+    map: "Nuke",
     players: "6",
     maxPlayers: "10",
     mode: "5v5",
-    ip: "123.45.69.3:27015",
+    ip: "123.45.68.4:27015",
   },
   {
     id: 11,
@@ -101,18 +100,101 @@ export const servers: Server[] = [
     players: "5",
     maxPlayers: "10",
     mode: "5v5",
-    ip: "123.45.69.3:27015",
+    ip: "123.45.68.5:27015",
   },
   {
     id: 12,
     name: "5v5 #6",
-    map: "Anubis",
+    map: "Inferno",
     players: "10",
     maxPlayers: "10",
     mode: "5v5",
+    ip: "123.45.68.6:27015",
+  },
+
+  // ---------------- Retake ----------------
+  {
+    id: 13,
+    name: "Retake #1",
+    map: "Train",
+    players: "4",
+    maxPlayers: "10",
+    mode: "Retake",
+    ip: "123.45.69.1:27015",
+  },
+  {
+    id: 14,
+    name: "Retake #2",
+    map: "Anubis",
+    players: "5",
+    maxPlayers: "10",
+    mode: "Retake",
+    ip: "123.45.69.2:27015",
+  },
+  {
+    id: 15,
+    name: "Retake #3",
+    map: "Mirage",
+    players: "7",
+    maxPlayers: "10",
+    mode: "Retake",
     ip: "123.45.69.3:27015",
   },
+  {
+    id: 16,
+    name: "Retake #4",
+    map: "Ancient",
+    players: "8",
+    maxPlayers: "10",
+    mode: "Retake",
+    ip: "123.45.69.4:27015",
+  },
+  {
+    id: 17,
+    name: "Retake #5",
+    map: "Dust2",
+    players: "9",
+    maxPlayers: "10",
+    mode: "Retake",
+    ip: "123.45.69.5:27015",
+  },
+  {
+    id: 18,
+    name: "Retake #6",
+    map: "Nuke",
+    players: "6",
+    maxPlayers: "10",
+    mode: "Retake",
+    ip: "123.45.69.6:27015",
+  },
 ];
+
+export const SteamUser = [
+  {
+    steamId: '1234567890',
+    userName: 'U S E R',
+    steamAcc: 'https://steamcommunity.com/id/javokhir9026',
+    balance: 20000,
+    UserAvatar: Avatar,
+    createdAt: '14.10.2025 00:05:02',
+    Email: 'example@gmail.com',
+    SteamLogin: 'SteamUser123',
+    approved: true,
+    hidden: false,
+    isOnline: true
+  },
+];
+
+export const Promocodes = [
+  {
+    promo: 'start',
+    discount: 20
+  },
+  {
+    promo: 'nyear',
+    discount: 25
+  }
+]
 
 export const Premiums = [
   {
@@ -130,9 +212,9 @@ export const Premiums = [
       "AWP cheklovidan immunitet",
       "Tasodifiy smoke rangi",
       "RETAKE serverlarida kutishsiz o'yinga qo'shilish",
-      "Va boshqa imkoniyatlar"
+      "Va boshqa imkoniyatlar",
     ],
-    term: "30 kun"
+    term: "30 kun",
   },
   {
     id: 2,
@@ -149,8 +231,8 @@ export const Premiums = [
       "AWP cheklovidan immunitet",
       "Tasodifiy smoke rangi",
       "RETAKE serverlarida kutishsiz o'yinga qo'shilish",
-      "Va boshqa imkoniyatlar"
+      "Va boshqa imkoniyatlar",
     ],
-    term: "1 yil"
-  }
-]
+    term: "1 yil",
+  },
+];

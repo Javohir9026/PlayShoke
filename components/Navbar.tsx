@@ -101,7 +101,7 @@ export default function Header() {
                 className="rounded-full object-cover"
               />
               {clickedProfile ? (
-                <ChevronUp className="text-lg" />
+                <ChevronUp className="text-lg text-red-500" />
               ) : (
                 <ChevronDown className="text-lg" />
               )}
