@@ -4,8 +4,10 @@ import HeroServers from "@/components/HeroServers";
 const page = () => {
   return (
     <div className="mb-10">
-      <HeroBanners />
-      <HeroServers/>
+      <div className="hidden md:flex">
+        <HeroBanners />
+      </div>
+      <HeroServers />
     </div>
   );
 };
